@@ -2,11 +2,6 @@ FROM r-base:4.0.3
 
 WORKDIR /app
 
-RUN useradd -M -r knowage \
-	&& chown -R knowage:knowage /app
-
-USER knowage
-
 COPY LICENSE ./
 
 RUN apt-get update \
@@ -15,3 +10,8 @@ RUN apt-get update \
 	&& r -e "install.packages('plumber')" \
 	&& r -e "install.packages('base64enc')" \
 	&& r -e "install.packages('jose')"
+
+RUN useradd -M -r knowage \
+	&& chown -R knowage:knowage /app
+
+USER knowage
