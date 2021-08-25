@@ -1,11 +1,11 @@
 FROM r-base:4.0.3
 
+WORKDIR /app
+
 RUN useradd -M -r knowage \
 	&& chown -R knowage:knowage /app
 
 USER knowage
-
-WORKDIR /app
 
 COPY LICENSE ./
 
